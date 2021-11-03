@@ -1,0 +1,11 @@
+header {
+    background-color: #f36262;
+    padding: 15px 0;
+    color: white;
+    text-align: center;
+    font-size: x-large;
+}
+
+.shadows {
+    box-shadow: 5px 5px 5px gray;
+}
