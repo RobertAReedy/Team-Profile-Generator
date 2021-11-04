@@ -153,7 +153,11 @@ function createEmployee(traits) {
  * Will call using generate(employees) to get a return of
  * HTML code to write to a file in dist using fs
  */
-function writeHTML() {
+function writeHTML(employeeArr) {
+    const html = generate(employeeArr);
+    fs.writeFile("./dist/portfolio.html", html, err => {
+        
+    });
     return "string containing HTML, test to see if string returned";
 }
 
@@ -165,8 +169,8 @@ async function start() {
         answers = await getInput();
         employees.push(createEmployee(answers));
     }
-    
-    console.log(employees);
+
+    writeHTML(employees);
 }
 
 start();

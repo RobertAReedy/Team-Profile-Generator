@@ -13,12 +13,12 @@ test("tests createEmployee", () => {
     expect(Emp.getName()).toBe("Timbo");
 });
 
-test("tests getInput", () => {
-    const answer = index.getInput();
-    expect(answer).toEqual(expect.any(Object));
-    expect(answer.name).toEqual(expect.any(String));
-});
+// test("tests getInput", () => {
+//     const answer = await index.getInput();
+//     expect(answer).toEqual(expect.any(Object));
+//     expect(answer.name).toEqual(expect.any(String));
+// });
 
 test("tests writeHTML", () => {
-    expect(index.writeHTML()).toEqual(expect.any(String));
+    expect(index.writeHTML([{name: "Timbo", id: "420", email: "email"}])).toEqual(expect.any(String));
 });
