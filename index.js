@@ -5,6 +5,30 @@ const Intern = require("./lib/Intern");
 const Manager = require("./lib/Manager");
 const generate = require("./src/html-template");
 var employees = [];
+const questions = [
+    {
+        type: "list",
+        name: "role",
+        message: "Which kind of employee would you like to create?",
+        choices: ["Employee", "Intern", "Engineer", "Manager"]
+    },
+    {
+        type: "input",
+        name: "name",
+        message: "What is the employee's name?",
+        validate: validate(entry, "Please enter the employee's name.")
+    }
+];
+
+const validate = (entry, message) => {
+    if (entry) {
+        return true;
+    }
+    else {
+        console.log(message);
+        return false;
+    }
+}
 
 /**
  * Will use inquirer to get an answer,
@@ -23,8 +47,8 @@ function getInput() {
  * with key/value pairs based on the names
  * of the questions asked via inquirer
  */
- function createEmployee(traits) {
-    return {test: "the employee object for test purposes"};
+function createEmployee(traits) {
+    return { test: "the employee object for test purposes" };
 }
 
 /**
@@ -41,4 +65,4 @@ function start() {
 
 // start();
 
-module.exports = {getInput, createEmployee, writeHTML};
+module.exports = { getInput, createEmployee, writeHTML };
