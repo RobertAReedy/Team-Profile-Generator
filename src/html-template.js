@@ -5,8 +5,47 @@
  * could use typeof == employeeType to pick one of three
  * routes (first seems preferable since getRole exists)
  */
-function createEmployeeCard(employeeData) {
-    return `html will go here`;
+function createEmployeeCard(employeeArr) {
+    let retVal = ``;
+
+    employeeArr.forEach(employee => {
+        retVal += `<div class="card col-3 bg-primary m-3 shadows">
+        <div class="card-body">
+            <h5 class="card-title  text-white">${employee.getName()}</h5>
+            <p class="card-text  text-white">${employee.getRole()}</p>
+            <ul class="list-group list-group-flush text-black">
+                <li class="list-group-item">ID: ${employee.getId()}</li>
+                <li class="list-group-item">
+                    Email: <a href="mailto:${employee.getEmail()}">${employee.getEmail()}</a>
+                </li>
+                
+                ${addUniqueItem(employee)}
+            </ul>
+        </div>
+    </div>\n\t`
+    });
+
+    return retVal;
+}
+
+function addUniqueItem(employee) {
+    switch (employee.getRole()) {
+        case "Intern":
+            return `<li class="list-group-item">
+                School: ${employee.getSchool()}
+            </li>`;
+        case "Engineer":
+            return `<li class="list-group-item">
+                Github: <a href="https://www.github.com/${employee.getGithub()}">www.github.com/${employee.getGithub()}</a>
+            </li>`;
+        case "Manager":
+            return `<li class="list-group-item">
+                Office number: ${employee.getOfficeNumber()}
+            </li>`;
+        default:
+            break;
+    }
+    return "";
 }
 
 /**
@@ -31,22 +70,7 @@ module.exports = (employeeObjectArray) => {
 	<header>My Team</header>
 
 	<main class="row m-5 justify-content-center">
-
-		<div class="card col-3 bg-primary m-3 shadows">
-			<div class="card-body">
-				<h5 class="card-title  text-white">Johnny</h5>
-				<p class="card-text  text-white">Violin Player</p>
-				<ul class="list-group list-group-flush text-black">
-					<li class="list-group-item">ID: 1</li>
-					<li class="list-group-item">
-						Email: <a href="mailto:wungisbill@gmail.com">wungisbill@gmail.com</a>
-					</li>
-					<li class="list-group-item">
-						Github: <a href="https://www.github.com/bingus">www.github.com/bingus</a>
-					</li>
-				</ul>
-			</div>
-		</div>
+    ${createEmployeeCard(employeeObjectArray)}
 
 	</main>
 
