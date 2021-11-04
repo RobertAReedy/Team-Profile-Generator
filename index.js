@@ -24,7 +24,7 @@ function getInput() {
  * of the questions asked via inquirer
  */
  function createEmployee(traits) {
-    return "the employee object for test purposes";
+    return {test: "the employee object for test purposes"};
 }
 
 /**
@@ -39,4 +39,6 @@ function start() {
 
 }
 
-start();
+// start();
+
+module.exports = {getInput, createEmployee, writeHTML};
